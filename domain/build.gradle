@@ -1,0 +1,10 @@
+apply plugin: 'kotlin'
+targetCompatibility = 1.8
+sourceCompatibility = 1.8
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+}
+repositories {
+    mavenCentral()
+}
