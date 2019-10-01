@@ -4,17 +4,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import kotlinx.android.synthetic.main.fragment_home.*
 import lt.vn.openweathermapcleanmvvm.BR
 import lt.vn.openweathermapcleanmvvm.R
-import lt.vn.openweathermapcleanmvvm.databinding.FragmentWeatherBinding
+import lt.vn.openweathermapcleanmvvm.databinding.FragmentHomeBinding
 import org.koin.android.viewmodel.ext.android.getViewModel
 
-class WeatherFragment : Fragment() {
 
-    private lateinit var viewModel: WeatherViewModel
-    private lateinit var dataBinding: FragmentWeatherBinding
+class HomeFragment : Fragment() {
+
+    private lateinit var viewModel: HomeViewModel
+    private lateinit var dataBinding: FragmentHomeBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,13 +34,25 @@ class WeatherFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_weather, container, false)
+        dataBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
         dataBinding.lifecycleOwner = this
         dataBinding.setVariable(BR.viewModel, viewModel)
         return dataBinding.root
     }
 
-    private fun onObserve(viewModel: WeatherViewModel) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        etCity.setOnEditorActionListener{  _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                viewModel.onNext()
+                true
+            } else {
+                false
+            }
+        }
+    }
+
+    private fun onObserve(viewModel: HomeViewModel) {
 
     }
 }

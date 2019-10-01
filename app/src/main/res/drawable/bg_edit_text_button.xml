@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners
+                android:bottomRightRadius="@dimen/et_bottom_left_corner_radius"
+                android:topRightRadius="@dimen/et_top_left_corner_radius" />
+        </shape>
+    </item>
+    <item
+        android:bottom="@dimen/padding_m"
+        android:end="@dimen/padding_m"
+        android:start="@dimen/padding_m"
+        android:top="@dimen/padding_m">
+        <bitmap
+            android:src="@drawable/ic_arrow"
+            android:tint="@color/colorPrimaryDark" />
+    </item>
+</layer-list>

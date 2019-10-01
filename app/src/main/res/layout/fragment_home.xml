@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="lt.vn.openweathermapcleanmvvm.weather.HomeViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipChildren="false">
+
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_xl"
+            android:layout_marginEnd="@dimen/margin_xl"
+            android:layout_marginBottom="@dimen/margin_xl"
+            android:src="@drawable/ic_logo"
+            app:layout_constraintBottom_toTopOf="@+id/etCity"
+            app:layout_constraintEnd_toEndOf="@id/ibContinue"
+            app:layout_constraintStart_toStartOf="@id/etCity"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintWidth_default="wrap" />
+
+        <EditText
+            android:id="@+id/etCity"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="@dimen/margin_l"
+            android:layout_marginEnd="@dimen/margin_xs"
+            android:autofillHints="city"
+            android:hint="@string/weather_home_edit_text_hint"
+            android:inputType="textCapCharacters"
+            android:text="@={viewModel.city}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/ibContinue"
+            app:layout_constraintHeight_default="wrap"
+            app:layout_constraintHorizontal_chainStyle="spread"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ivLogo"
+            tools:targetApi="o" />
+
+        <!-- TODO figure out why ripple mask does not work https://github.com/narkusv/Open-Weather-Map-demo/issues/1-->
+        <ImageButton
+            android:id="@+id/ibContinue"
+            android:layout_width="@dimen/edit_text_button_width"
+            android:layout_height="0dp"
+            android:layout_marginEnd="@dimen/margin_l"
+            android:background="@drawable/bg_edit_text_button"
+            android:contentDescription="Continue"
+            android:foreground="?selectableItemBackgroundBorderless"
+            android:onClick="@{() -> viewModel.onNext()}"
+            app:layout_constraintBottom_toBottomOf="@id/etCity"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/etCity"
+            app:layout_constraintTop_toTopOf="@id/etCity" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
