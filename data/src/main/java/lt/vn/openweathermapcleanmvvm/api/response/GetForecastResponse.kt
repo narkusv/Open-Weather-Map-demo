@@ -23,8 +23,9 @@ data class Main(
     val temp_max: Float
 )
 
-fun GetForecastResponse.toDomainModel(): ForecastDomainModel {
+fun GetForecastResponse.toDomainModel(imageEndpointFormat: String): ForecastDomainModel {
     return ForecastDomainModel(
+        iconEndpoint = String.format(imageEndpointFormat.format(weather.first().icon)),
         description = weather.first().main,
         temperature = main.temp.roundToInt(),
         dateTime = dt.toLong(),

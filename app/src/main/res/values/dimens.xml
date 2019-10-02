@@ -15,5 +15,5 @@
 
     <dimen name="default_card_item_height">192dp</dimen>
     <dimen name="default_card_corner_radius">16dp</dimen>
-    <dimen name="weather_item_card_max_font_size">90sp</dimen>
+    <dimen name="weather_item_card_max_font_size">120sp</dimen>
 </resources>

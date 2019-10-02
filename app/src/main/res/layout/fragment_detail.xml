@@ -49,6 +49,7 @@
             android:layout_marginTop="@dimen/margin_xl"
             android:layout_marginEnd="@dimen/margin_xl"
             android:visibility="@{viewModel.loading ?  View.GONE : View.VISIBLE}"
+            app:iconEndpoint="@{viewModel.weatherData.iconEndpoint}"
             app:city="@{viewModel.weatherData.name}"
             app:date="@{Formatter.convertLongToTimeString(viewModel.weatherData.dateTime)}"
             app:status="@{viewModel.weatherData.description}"

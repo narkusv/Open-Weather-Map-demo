@@ -1,6 +1,7 @@
 package lt.vn.openweathermapcleanmvvm.repository.weather
 
 import android.util.Log
+import lt.vn.openweathermapcleanmvvm.Properties
 import lt.vn.openweathermapcleanmvvm.api.response.toDomainModel
 import lt.vn.openweathermapcleanmvvm.api.weather.WeatherApi
 import lt.vn.openweathermapcleanmvvmdomain.model.ForecastDomainModel
@@ -14,7 +15,8 @@ class WeatherRepositoryImpl constructor(
         val locationQuery = "$city, LTU"
         val units = "metric"
         try {
-            return weatherApi.getForecastByQuery(locationQuery, units).toDomainModel()
+            return weatherApi.getForecastByQuery(locationQuery, units)
+                .toDomainModel(Properties.ICON_ENDPOINT)
         } catch (ex: Exception) {
             Log.d(WeatherRepository::class.java.name, "Error retrieving service result", ex)
             throw ex

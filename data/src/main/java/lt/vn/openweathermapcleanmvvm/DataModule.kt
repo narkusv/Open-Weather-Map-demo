@@ -41,6 +41,8 @@ inline fun <reified T> createWebService(okHttpClient: OkHttpClient, url: String)
 }
 
 object Properties {
+
+    const val ICON_ENDPOINT = "https://openweathermap.org/img/wn/%s@2x.png"
     const val BASE_URL = "https://api.openweathermap.org/"
     const val API_KEY = "6138bc9b33cfa45c4e1bfe3d8709b8fd"
 }
