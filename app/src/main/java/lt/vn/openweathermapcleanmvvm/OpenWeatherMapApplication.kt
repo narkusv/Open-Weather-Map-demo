@@ -18,7 +18,7 @@ class OpenWeatherMapApplication : Application() {
         startKoin {
             androidLogger()
             androidContext(this@OpenWeatherMapApplication)
-            modules(appModule)
+            modules(listOf(appModule, dataModule))
         }
     }
 }

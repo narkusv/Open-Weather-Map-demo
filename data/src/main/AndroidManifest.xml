@@ -1,1 +1,6 @@
-<manifest package="lt.vn.openweathermapcleanmvvm.data" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="lt.vn.openweathermapcleanmvvm.data">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+</manifest>

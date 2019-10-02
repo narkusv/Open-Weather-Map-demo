@@ -11,11 +11,11 @@ import org.koin.core.parameter.parametersOf
 
 class DetailFragment : Fragment() {
 
-    val viewModel by viewModel<DetailViewModel> {
+    private val viewModel by viewModel<DetailViewModel> {
         parametersOf(DetailFragmentArgs.fromBundle(requireArguments()).city)
     }
 
-    lateinit var dataBinding: FragmentDetailBinding
+    private lateinit var dataBinding: FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -23,6 +23,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dataBinding = FragmentDetailBinding.inflate(inflater)
+        dataBinding.viewModel = viewModel
         return dataBinding.root
     }
 }
