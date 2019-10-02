@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="margin_xs">4dp</dimen>
+    <dimen name="margin_s">8dp</dimen>
+    <dimen name="margin_m">16dp</dimen>
     <dimen name="margin_l">24dp</dimen>
     <dimen name="margin_xl">32dp</dimen>
 
@@ -10,4 +12,8 @@
     <dimen name="et_top_left_corner_radius">12dp</dimen>
     <dimen name="et_bottom_left_corner_radius">12dp</dimen>
     <dimen name="edit_text_button_width">76dp</dimen>
+
+    <dimen name="default_card_item_height">192dp</dimen>
+    <dimen name="default_card_corner_radius">16dp</dimen>
+    <dimen name="weather_item_card_max_font_size">90sp</dimen>
 </resources>
