@@ -8,7 +8,8 @@ interface WeatherApi {
 
     @GET("data/2.5/weather")
     suspend fun getForecastByQuery(
-        @Query("q") query: String
+        @Query("q") query: String,
+        @Query("units") units: String
     ): GetForecastResponse
 
 }

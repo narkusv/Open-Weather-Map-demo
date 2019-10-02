@@ -1,21 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
+        <import type="lt.vn.openweathermapcleanmvvm.Formatter" />
 
         <variable
             name="viewModel"
             type="lt.vn.openweathermapcleanmvvm.weather.detail.DetailViewModel" />
     </data>
-    <LinearLayout
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:orientation="vertical">
 
         <Toolbar
             android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize" />
+            android:layout_width="0dp"
+            android:layout_height="?actionBarSize"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constrainedHeight="true"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:visibleIf="@{viewModel.loading}"
+            tools:visibility="visible" />
 
         <include
             layout="@layout/view_weather_item"
@@ -23,6 +47,11 @@
             android:layout_height="@dimen/default_card_item_height"
             android:layout_marginStart="@dimen/margin_xl"
             android:layout_marginTop="@dimen/margin_xl"
-            android:layout_marginEnd="@dimen/margin_xl" />
-    </LinearLayout>
+            android:layout_marginEnd="@dimen/margin_xl"
+            android:visibility="@{viewModel.loading ?  View.GONE : View.VISIBLE}"
+            app:city="@{viewModel.weatherData.name}"
+            app:date="@{Formatter.convertLongToTimeString(viewModel.weatherData.dateTime)}"
+            app:status="@{viewModel.weatherData.description}"
+            app:temperature="@{Formatter.formatTemperatureString(String.valueOf(viewModel.weatherData.temperature))}" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

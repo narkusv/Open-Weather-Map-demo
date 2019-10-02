@@ -12,8 +12,9 @@ class WeatherRepositoryImpl constructor(
 
     override suspend fun getForecastForCity(city: String): ForecastDomainModel {
         val locationQuery = "$city, LTU"
+        val units = "metric"
         try {
-            return weatherApi.getForecastByQuery(locationQuery).toDomainModel()
+            return weatherApi.getForecastByQuery(locationQuery, units).toDomainModel()
         } catch (ex: Exception) {
             Log.d(WeatherRepository::class.java.name, "Error retrieving service result", ex)
             throw ex

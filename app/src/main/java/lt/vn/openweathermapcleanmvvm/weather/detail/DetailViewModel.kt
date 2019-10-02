@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
+import lt.vn.openweathermapcleanmvvmdomain.model.ForecastDomainModel
 import lt.vn.openweathermapcleanmvvmdomain.repository.weather.WeatherRepository
 
 class DetailViewModel(
@@ -12,13 +13,14 @@ class DetailViewModel(
     private val repository: WeatherRepository
 ) : ViewModel() {
 
+    val weatherData = MutableLiveData<ForecastDomainModel>()
     val loading = MutableLiveData<Boolean>().apply { value = false }
 
     init {
-        loading.value = true
         viewModelScope.launch {
             try {
-                repository.getForecastForCity(selectedCity)
+                loading.value = true
+                weatherData.value = repository.getForecastForCity(selectedCity)
                 loading.value = false
             } catch (ex: Exception) {
                 Log.d(DetailViewModel::class.java.name, "Crash fetching data", ex)

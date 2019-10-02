@@ -1,12 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:tools="http://schemas.android.com/tools">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
+        <variable
+            name="status"
+            type="String" />
+
+        <variable
+            name="temperature"
+            type="String" />
+
+        <variable
+            name="city"
+            type="String" />
+
+        <variable
+            name="date"
+            type="String" />
     </data>
 
-    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_card_item_height"
         android:orientation="vertical"
@@ -31,6 +47,7 @@
                 android:id="@+id/tvWeatherStatus"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
+                android:text="@{status}"
                 android:textAppearance="?textAppearanceBody1"
                 app:layout_constraintBottom_toBottomOf="@id/ivWeatherStatus"
                 app:layout_constraintHeight_default="wrap"
@@ -46,6 +63,7 @@
                 android:autoSizeMaxTextSize="@dimen/weather_item_card_max_font_size"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
+                android:text="@{temperature}"
                 android:textAppearance="?textAppearanceBody1"
                 android:textSize="@dimen/weather_item_card_max_font_size"
                 app:layout_constraintBottom_toTopOf="@id/tvCity"
@@ -62,6 +80,7 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="@dimen/margin_m"
                 android:layout_marginBottom="@dimen/margin_m"
+                android:text="@{city}"
                 android:textAppearance="?textAppearanceSubtitle1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_default="wrap"
@@ -76,6 +95,7 @@
                 android:layout_marginEnd="@dimen/margin_m"
                 android:layout_marginBottom="@dimen/margin_m"
                 android:gravity="center"
+                android:text="@{date}"
                 android:textAppearance="?textAppearanceSubtitle1"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

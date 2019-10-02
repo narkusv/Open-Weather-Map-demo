@@ -1,6 +1,7 @@
 package lt.vn.openweathermapcleanmvvm.api.response
 
 import lt.vn.openweathermapcleanmvvmdomain.model.ForecastDomainModel
+import kotlin.math.roundToInt
 
 data class GetForecastResponse(
     val main: Main,
@@ -17,15 +18,15 @@ data class Weather(
 )
 
 data class Main(
-    val temp: String,
-    val temp_min: String,
-    val temp_max: String
+    val temp: Float,
+    val temp_min: Float,
+    val temp_max: Float
 )
 
 fun GetForecastResponse.toDomainModel(): ForecastDomainModel {
     return ForecastDomainModel(
-        description = weather.first().description,
-        temperature = main.temp,
+        description = weather.first().main,
+        temperature = main.temp.roundToInt(),
         dateTime = dt.toLong(),
         name = name
     )

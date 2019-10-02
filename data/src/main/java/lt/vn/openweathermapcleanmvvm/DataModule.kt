@@ -26,7 +26,7 @@ fun provideDefaultOkhttpClient(): OkHttpClient {
     return OkHttpClient.Builder()
         .addInterceptor(ProvideApiKeyInterceptor(Properties.API_KEY))
         .addInterceptor(HttpLoggingInterceptor().apply {
-            level = HttpLoggingInterceptor.Level.BASIC
+            level = HttpLoggingInterceptor.Level.BODY
         })
         .build()
 }

@@ -23,6 +23,7 @@ class DetailFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         dataBinding = FragmentDetailBinding.inflate(inflater)
+        dataBinding.lifecycleOwner = this
         dataBinding.viewModel = viewModel
         return dataBinding.root
     }
