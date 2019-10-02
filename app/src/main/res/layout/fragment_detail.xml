@@ -49,10 +49,11 @@
             android:layout_marginTop="@dimen/margin_xl"
             android:layout_marginEnd="@dimen/margin_xl"
             android:visibility="@{viewModel.loading ?  View.GONE : View.VISIBLE}"
-            app:iconEndpoint="@{viewModel.weatherData.iconEndpoint}"
             app:city="@{viewModel.weatherData.name}"
             app:date="@{Formatter.convertLongToTimeString(viewModel.weatherData.dateTime)}"
+            app:iconEndpoint="@{viewModel.weatherData.iconEndpoint}"
             app:status="@{viewModel.weatherData.description}"
-            app:temperature="@{Formatter.formatTemperatureString(String.valueOf(viewModel.weatherData.temperature))}" />
+            app:temperature="@{Formatter.formatTemperatureString(String.valueOf(viewModel.weatherData.temperature))}"
+            app:temperatureType="@{viewModel.temperatureType}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

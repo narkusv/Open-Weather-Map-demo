@@ -6,6 +6,10 @@
     <data>
 
         <variable
+            name="temperatureType"
+            type="lt.vn.openweathermapcleanmvvm.weather.detail.DetailViewModel.TemperatureType" />
+
+        <variable
             name="iconEndpoint"
             type="String" />
 
@@ -71,12 +75,16 @@
                 android:text="@{temperature}"
                 android:textAppearance="?textAppearanceBody1"
                 android:textSize="@dimen/weather_item_card_max_font_size"
+                app:highTemperatureColor="@{@color/red}"
                 app:layout_constraintBottom_toBottomOf="@id/tvCity"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_default="wrap"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@id/tvWeatherStatus"
                 app:layout_constraintWidth_default="wrap"
+                app:lowTemperatureColor="@{@color/green}"
+                app:midTemperatureColor="@{@color/yellow}"
+                app:temperatureType="@{temperatureType}"
                 tools:text="17°" />
 
             <TextView
@@ -87,10 +95,14 @@
                 android:layout_marginBottom="@dimen/margin_m"
                 android:text="@{city}"
                 android:textAppearance="?textAppearanceSubtitle1"
+                app:highTemperatureColor="@{@color/green}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHeight_default="wrap"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintWidth_default="wrap"
+                app:lowTemperatureColor="@{@color/yellow}"
+                app:midTemperatureColor="@{@color/red}"
+                app:temperatureType="@{temperatureType}"
                 tools:text="Vilnius" />
 
             <TextView
@@ -102,10 +114,14 @@
                 android:gravity="center"
                 android:text="@{date}"
                 android:textAppearance="?textAppearanceSubtitle1"
+                app:highTemperatureColor="@{@color/yellow}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHeight_default="wrap"
                 app:layout_constraintWidth_default="wrap"
+                app:lowTemperatureColor="@{@color/red}"
+                app:midTemperatureColor="@{@color/green}"
+                app:temperatureType="@{temperatureType}"
                 tools:text="Sun \n 01" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

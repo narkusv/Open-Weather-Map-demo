@@ -15,6 +15,7 @@ class DetailViewModel(
     private val repository: WeatherRepository
 ) : ViewModel() {
 
+    val temperatureType = MutableLiveData<TemperatureType>()
     val weatherData = MutableLiveData<ForecastDomainModel>()
     val error = SingleLiveEvent<ForecastResult.Error>()
     val loading = MutableLiveData<Boolean>().apply { value = false }
@@ -24,7 +25,10 @@ class DetailViewModel(
             try {
                 loading.value = true
                 when (val result = repository.getForecastForCity(selectedCity)) {
-                    is ForecastResult.Success -> weatherData.value = result.forecastDomainModel
+                    is ForecastResult.Success -> weatherData.value =
+                        result.forecastDomainModel.also {
+                            temperatureType.value = mapTemperatureToTemperatureType(it.temperature)
+                        }
                     is ForecastResult.Error -> error.value = result
                 }
                 loading.value = false
@@ -32,5 +36,19 @@ class DetailViewModel(
                 Log.d(DetailViewModel::class.java.name, "Crash fetching data", ex)
             }
         }
+    }
+
+    private fun mapTemperatureToTemperatureType(temperature: Int): TemperatureType {
+        return when {
+            temperature <= 10 -> TemperatureType.Low
+            temperature >= 20 -> TemperatureType.High
+            else -> TemperatureType.Mid
+        }
+    }
+
+    sealed class TemperatureType {
+        object Low : TemperatureType()
+        object Mid : TemperatureType()
+        object High : TemperatureType()
     }
 }
