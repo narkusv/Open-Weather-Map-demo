@@ -1,9 +1,9 @@
 package lt.vn.openweathermapcleanmvvmdomain.repository.weather
 
-import lt.vn.openweathermapcleanmvvmdomain.model.ForecastDomainModel
+import lt.vn.openweathermapcleanmvvmdomain.model.ForecastResult
 
 interface WeatherRepository {
 
-    suspend fun getForecastForCity(city: String): ForecastDomainModel
+    suspend fun getForecastForCity(city: String): ForecastResult
 
 }

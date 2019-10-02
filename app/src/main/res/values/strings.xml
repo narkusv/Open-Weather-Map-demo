@@ -2,4 +2,6 @@
     <string name="app_name">OpenWeatherMap Clean MVVM demo</string>
     <string name="weather_home_edit_text_hint">ENTER CITY NAME</string>
     <string name="error_city_name_invalid">Please provide a valid city name</string>
+    <string name="error_generic_error">Something went wrong. Please try again later</string>
+    <string name="error_city_not_found">City you have provided was not found.</string>
 </resources>
