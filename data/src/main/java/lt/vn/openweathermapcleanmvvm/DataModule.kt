@@ -1,6 +1,10 @@
 package lt.vn.openweathermapcleanmvvm
 
+import android.content.Context
+import androidx.room.Room
 import lt.vn.openweathermapcleanmvvm.api.weather.WeatherApi
+import lt.vn.openweathermapcleanmvvm.db.ForecastDatabase
+import lt.vn.openweathermapcleanmvvm.db.ForecastLocalDataSource
 import lt.vn.openweathermapcleanmvvm.repository.weather.WeatherRepositoryImpl
 import lt.vn.openweathermapcleanmvvmdomain.repository.weather.WeatherRepository
 import okhttp3.OkHttpClient
@@ -18,8 +22,19 @@ val dataModule = module {
             Properties.BASE_URL
         )
     }
-    single<WeatherRepository> { WeatherRepositoryImpl(get()) }
+    single { createForecastDatabase(get()) }
+    single { ForecastLocalDataSource(get<ForecastDatabase>().forecastDao()) }
+    single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
 
+}
+
+fun createForecastDatabase(context: Context): ForecastDatabase {
+    return Room.databaseBuilder(
+        context,
+        ForecastDatabase::class.java,
+        "forecast-database"
+    )
+        .build()
 }
 
 fun provideDefaultOkhttpClient(): OkHttpClient {

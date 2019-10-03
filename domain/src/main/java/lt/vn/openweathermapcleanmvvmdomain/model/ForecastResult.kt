@@ -1,13 +1,10 @@
 package lt.vn.openweathermapcleanmvvmdomain.model
 
-sealed class ForecastResult {
-    data class Success(val forecastDomainModel: ForecastDomainModel) : ForecastResult()
-    sealed class Error : ForecastResult() {
-        object ApiConfigurationError : Error()
-        object CityNotFound : Error()
-        object ApiCallsExceeded : Error()
-        object GenericError : Error()
-    }
+sealed class ForecastError : Exception() {
+    object ApiConfigurationError : ForecastError()
+    object CityNotFound : ForecastError()
+    object ApiCallsExceeded : ForecastError()
+    data class GenericError(val throwable: Throwable) : ForecastError()
 }
 
 data class ForecastDomainModel(

@@ -1,6 +1,7 @@
 package lt.vn.openweathermapcleanmvvm.weather.detail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import lt.vn.openweathermapcleanmvvm.R
 import lt.vn.openweathermapcleanmvvm.databinding.FragmentDetailBinding
-import lt.vn.openweathermapcleanmvvmdomain.model.ForecastResult
+import lt.vn.openweathermapcleanmvvmdomain.model.ForecastError
 import org.koin.android.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
@@ -38,15 +39,18 @@ class DetailFragment : Fragment() {
         return dataBinding.root
     }
 
-    private fun handleError(error: ForecastResult.Error) {
+    private fun handleError(error: Exception) {
         when (error) {
-            is ForecastResult.Error.ApiConfigurationError,
-            ForecastResult.Error.ApiCallsExceeded,
-            ForecastResult.Error.GenericError -> {
+            is ForecastError.ApiConfigurationError,
+            is ForecastError.ApiCallsExceeded,
+            is ForecastError.GenericError -> {
                 showSnackBarError(getString(R.string.error_generic_error))
             }
-            is ForecastResult.Error.CityNotFound -> {
+            is ForecastError.CityNotFound -> {
                 showSnackBarError(getString(R.string.error_city_not_found))
+            }
+            else -> showSnackBarError(getString(R.string.error_generic_error)).also {
+                Log.d(DetailFragment::class.java.name, "Unknown exception has been thrown", error)
             }
         }
         findNavController().popBackStack()

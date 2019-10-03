@@ -7,7 +7,7 @@ import java.util.*
 
 fun convertLongToTimeString(time: Long): String {
     val date = Date(time)
-    val format = SimpleDateFormat("EEE \n dd", Locale.getDefault())
+    val format = SimpleDateFormat("EEE\ndd", Locale.getDefault())
     return format.format(date)
 }
 
