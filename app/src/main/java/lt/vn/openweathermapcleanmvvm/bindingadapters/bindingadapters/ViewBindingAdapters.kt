@@ -6,7 +6,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.squareup.picasso.Picasso
-import lt.vn.openweathermapcleanmvvm.weather.detail.DetailViewModel
+import lt.vn.openweathermapcleanmvvm.TemperatureType
+import lt.vn.openweathermapcleanmvvm.mapTemperatureToTemperatureType
 
 @BindingAdapter("visibleIf")
 fun changeVisibility(view: View, isVisible: Boolean) {
@@ -22,18 +23,18 @@ fun loadImageUrlI(view: ImageView, imageUrl: String?) {
     Picasso.get().load(imageUrl).into(view)
 }
 
-@BindingAdapter(value = ["lowTemperatureColor", "midTemperatureColor", "highTemperatureColor", "temperatureType"])
+@BindingAdapter(value = ["lowTemperatureColor", "midTemperatureColor", "highTemperatureColor", "temperature"])
 fun setColorBasedOnTemperature(
     view: TextView,
     lowTemperatureColor: Int,
     midTemperatureColor: Int,
     highTemperatureColor: Int,
-    temperatureType: DetailViewModel.TemperatureType?
+    temperature: Int?
 ) {
-    if (temperatureType == null) return
-    when (temperatureType) {
-        is DetailViewModel.TemperatureType.Low -> view.setTextColor(lowTemperatureColor)
-        is DetailViewModel.TemperatureType.Mid -> view.setTextColor(midTemperatureColor)
-        is DetailViewModel.TemperatureType.High -> view.setTextColor(highTemperatureColor)
+    if (temperature == null) return
+    when (mapTemperatureToTemperatureType(temperature)) {
+        is TemperatureType.Low -> view.setTextColor(lowTemperatureColor)
+        is TemperatureType.Mid -> view.setTextColor(midTemperatureColor)
+        is TemperatureType.High -> view.setTextColor(highTemperatureColor)
     }.apply { } // TODO consider adding exhaustive extension function
 }

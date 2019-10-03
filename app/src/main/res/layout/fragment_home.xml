@@ -62,5 +62,14 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/etCity"
             app:layout_constraintTop_toTopOf="@id/etCity" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_l"
+            android:onClick="@{() -> viewModel.onOpenHistory()}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/etCity" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

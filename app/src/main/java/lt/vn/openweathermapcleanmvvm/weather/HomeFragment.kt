@@ -68,6 +68,9 @@ class HomeFragment : Fragment() {
         viewModel.showWeatherForCity.observe(this, Observer {
             findNavController().navigate(R.id.action_homeFragment_to_detailFragment, DetailFragmentArgs(it.city).toBundle())
         })
+        viewModel.showWeatherHistory.observe(this, Observer {
+            findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
+        })
     }
 
     private fun handleInvalidCityNameError() {

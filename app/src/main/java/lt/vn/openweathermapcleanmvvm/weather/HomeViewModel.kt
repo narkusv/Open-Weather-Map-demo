@@ -8,6 +8,7 @@ class HomeViewModel : ViewModel() {
 
     val error = SingleLiveEvent<Error>()
     val showWeatherForCity = SingleLiveEvent<ShowWeatherForCity>()
+    val showWeatherHistory = SingleLiveEvent<Unit>()
     val city = MutableLiveData<String>().apply { value = "" }
 
     fun onNext() {
@@ -16,6 +17,10 @@ class HomeViewModel : ViewModel() {
             return
         }
         showWeatherForCity.value = ShowWeatherForCity(city.value!!)
+    }
+
+    fun onOpenHistory() {
+        showWeatherHistory()
     }
 
     private fun isValidCityName(city: String) = city.isNotEmpty()

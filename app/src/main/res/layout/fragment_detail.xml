@@ -53,7 +53,6 @@
             app:date="@{Formatter.convertLongToTimeString(viewModel.weatherData.dateTime)}"
             app:iconEndpoint="@{viewModel.weatherData.iconEndpoint}"
             app:status="@{viewModel.weatherData.description}"
-            app:temperature="@{Formatter.formatTemperatureString(String.valueOf(viewModel.weatherData.temperature))}"
-            app:temperatureType="@{viewModel.temperatureType}" />
+            app:temperature="@{viewModel.weatherData.temperature}" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

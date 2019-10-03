@@ -5,9 +5,7 @@
 
     <data>
 
-        <variable
-            name="temperatureType"
-            type="lt.vn.openweathermapcleanmvvm.weather.detail.DetailViewModel.TemperatureType" />
+        <import type="lt.vn.openweathermapcleanmvvm.Formatter" />
 
         <variable
             name="iconEndpoint"
@@ -19,7 +17,7 @@
 
         <variable
             name="temperature"
-            type="String" />
+            type="Integer" />
 
         <variable
             name="city"
@@ -33,6 +31,8 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="@dimen/default_card_item_height"
+        android:layout_marginTop="@dimen/margin_s"
+        android:layout_marginBottom="@dimen/margin_s"
         android:orientation="vertical"
         app:cardBackgroundColor="@color/bg_card_background"
         app:cardCornerRadius="@dimen/default_card_corner_radius"
@@ -72,7 +72,7 @@
                 android:autoSizeMaxTextSize="@dimen/weather_item_card_max_font_size"
                 android:autoSizeTextType="uniform"
                 android:gravity="center"
-                android:text="@{temperature}"
+                android:text="@{Formatter.formatTemperatureString(String.valueOf(temperature))}"
                 android:textAppearance="?textAppearanceBody1"
                 android:textSize="@dimen/weather_item_card_max_font_size"
                 app:highTemperatureColor="@{@color/red}"
@@ -84,7 +84,7 @@
                 app:layout_constraintWidth_default="wrap"
                 app:lowTemperatureColor="@{@color/green}"
                 app:midTemperatureColor="@{@color/yellow}"
-                app:temperatureType="@{temperatureType}"
+                app:temperature="@{temperature}"
                 tools:text="17°" />
 
             <TextView
@@ -102,7 +102,7 @@
                 app:layout_constraintWidth_default="wrap"
                 app:lowTemperatureColor="@{@color/yellow}"
                 app:midTemperatureColor="@{@color/red}"
-                app:temperatureType="@{temperatureType}"
+                app:temperature="@{temperature}"
                 tools:text="Vilnius" />
 
             <TextView
@@ -121,7 +121,7 @@
                 app:layout_constraintWidth_default="wrap"
                 app:lowTemperatureColor="@{@color/red}"
                 app:midTemperatureColor="@{@color/green}"
-                app:temperatureType="@{temperatureType}"
+                app:temperature="@{temperature}"
                 tools:text="Sun \n 01" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
