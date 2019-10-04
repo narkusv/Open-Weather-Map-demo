@@ -16,6 +16,10 @@ class WeatherRepositoryImpl constructor(
     private val localDataSource: ForecastLocalDataSource
 ) : WeatherRepository {
 
+    override suspend fun getForecastLookupHistory(maxElements: Int): Result<List<ForecastDomainModel>> {
+        return localDataSource.getForecastLookupHistory(maxElements)
+    }
+
     override suspend fun getForecastForCity(city: String): Result<ForecastDomainModel> {
         val remoteForecast = fetchForecast(city)
         when (remoteForecast) {

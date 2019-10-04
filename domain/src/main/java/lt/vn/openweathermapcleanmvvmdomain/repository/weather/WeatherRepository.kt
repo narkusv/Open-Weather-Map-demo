@@ -7,4 +7,6 @@ interface WeatherRepository {
 
     suspend fun getForecastForCity(city: String): Result<ForecastDomainModel>
 
+    suspend fun getForecastLookupHistory(maxElements: Int): Result<List<ForecastDomainModel>>
+
 }
