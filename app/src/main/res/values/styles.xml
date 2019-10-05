@@ -6,6 +6,8 @@
         <item name="editTextStyle">@style/WeatherAppEditText</item>
         <item name="android:windowBackground">@drawable/bg_main</item>
         <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="buttonStyle">@style/WeatherAppButton</item>
+        <item name="imageButtonStyle">@style/Widget.AppCompat.ImageButton</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
@@ -38,5 +40,12 @@
         <item name="android:textColorHint">@color/colorPrimary</item>
         <item name="android:singleLine">true</item>
         <item name="android:ellipsize">end</item>
+    </style>
+
+    <style name="WeatherAppButton" parent="Widget.AppCompat.Button">
+        <item name="android:padding">@dimen/padding_m</item>
+        <item name="android:textAppearance">?textAppearanceBody1</item>
+        <item name="android:background">@drawable/bg_button</item>
+        <item name="android:textColor">@color/white</item>
     </style>
 </resources>

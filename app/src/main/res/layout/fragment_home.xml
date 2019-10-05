@@ -49,14 +49,13 @@
             tools:targetApi="o" />
 
         <!-- TODO figure out why ripple mask does not work https://github.com/narkusv/Open-Weather-Map-demo/issues/1-->
-        <ImageButton
+        <Button
             android:id="@+id/ibContinue"
             android:layout_width="@dimen/edit_text_button_width"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/margin_l"
             android:background="@drawable/bg_edit_text_button"
             android:contentDescription="Continue"
-            android:foreground="?selectableItemBackgroundBorderless"
             android:onClick="@{() -> viewModel.onNext()}"
             app:layout_constraintBottom_toBottomOf="@id/etCity"
             app:layout_constraintEnd_toEndOf="parent"
@@ -64,10 +63,15 @@
             app:layout_constraintTop_toTopOf="@id/etCity" />
 
         <Button
+            android:id="@+id/bHistory"
             android:layout_width="wrap_content"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_l"
             android:onClick="@{() -> viewModel.onOpenHistory()}"
+            android:text="VIEW HISTORY"
+            android:textAllCaps="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/etCity" />
