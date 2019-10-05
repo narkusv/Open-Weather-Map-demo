@@ -23,6 +23,23 @@ class ForecastLocalDataSource internal constructor(
             }
         }
 
+    suspend fun getForecastLookupHistory(size: Int): Result<List<ForecastDomainModel>> =
+        withContext(Dispatchers.IO) {
+            try {
+                val forecasts: List<ForecastDomainModel> =
+                    forecastDao.getLastCities(size).filterNotNull().map {
+                        it.toDomainModel()
+                    }
+                if (forecasts.isNotEmpty()) {
+                    Result.Success(forecasts)
+                } else {
+                    Result.Error(ForecastError.CityNotFound)
+                }
+            } catch (e: Exception) {
+                Result.Error(ForecastError.GenericError(e))
+            }
+        }
+
     suspend fun saveForecast(forecast: ForecastDomainModel) =
         withContext(Dispatchers.IO) {
             forecastDao.insertForecastForCity(forecast.toDatabaseEntity())
