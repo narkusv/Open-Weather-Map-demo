@@ -17,7 +17,8 @@
             android:id="@+id/rvHistory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_margin="@dimen/margin_l"
+            android:layout_marginStart="@dimen/margin_l"
+            android:layout_marginEnd="@dimen/margin_l"
             android:orientation="vertical"
             tools:listitem="@layout/view_weather_item" />
     </FrameLayout>

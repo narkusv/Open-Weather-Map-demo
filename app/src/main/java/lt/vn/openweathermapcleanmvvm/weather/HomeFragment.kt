@@ -1,10 +1,12 @@
 package lt.vn.openweathermapcleanmvvm.weather
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -49,13 +51,13 @@ class HomeFragment : Fragment() {
         etCity.apply {
             requestFocus()
             setOnEditorActionListener { _, actionId, _ ->
-            if (actionId == EditorInfo.IME_ACTION_DONE) {
-                viewModel.onNext()
-                true
-            } else {
-                false
+                if (actionId == EditorInfo.IME_ACTION_DONE) {
+                    viewModel.onNext()
+                    true
+                } else {
+                    false
+                }
             }
-        }
         }
     }
 
@@ -66,10 +68,16 @@ class HomeFragment : Fragment() {
             }
         })
         viewModel.showWeatherForCity.observe(this, Observer {
-            findNavController().navigate(R.id.action_homeFragment_to_detailFragment, DetailFragmentArgs(it.city).toBundle())
+            findNavController().navigate(
+                R.id.action_homeFragment_to_detailFragment,
+                DetailFragmentArgs(it.city).toBundle()
+            )
         })
         viewModel.showWeatherHistory.observe(this, Observer {
             findNavController().navigate(R.id.action_homeFragment_to_historyFragment)
+            val keyboard =
+                requireActivity().getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            keyboard.hideSoftInputFromWindow(etCity.windowToken, 0)
         })
     }
 

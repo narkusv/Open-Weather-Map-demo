@@ -8,7 +8,6 @@
     <fragment
         android:id="@+id/homeFragment"
         android:name="lt.vn.openweathermapcleanmvvm.weather.HomeFragment"
-        android:label="WeatherFragment"
         tools:layout="@layout/fragment_home">
         <action
             android:id="@+id/action_homeFragment_to_detailFragment"
@@ -29,7 +28,6 @@
     <fragment
         android:id="@+id/detailFragment"
         android:name="lt.vn.openweathermapcleanmvvm.weather.detail.DetailFragment"
-        android:label="WeatherFragment"
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="city"
@@ -39,6 +37,5 @@
     <fragment
         android:id="@+id/historyFragment"
         android:name="lt.vn.openweathermapcleanmvvm.weather.history.HistoryFragment"
-        android:label="HistoryFragment"
         tools:layout="@layout/fragment_history" />
 </navigation>

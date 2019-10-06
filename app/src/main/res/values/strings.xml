@@ -4,4 +4,7 @@
     <string name="error_city_name_invalid">Please provide a valid city name</string>
     <string name="error_generic_error">Something went wrong. Please try again later</string>
     <string name="error_city_not_found">City you have provided was not found.</string>
+    <string name="view_history">VIEW HISTORY</string>
+    <string name="lookup_weather_forecast">Continue</string>
+    <string name="logo">Logo</string>
 </resources>
