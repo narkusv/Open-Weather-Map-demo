@@ -44,7 +44,6 @@ class WeatherRepositoryImpl constructor(
                     .toDomainModel(Properties.ICON_ENDPOINT)
             )
         } catch (exception: Exception) {
-            Log.d(WeatherRepository::class.java.name, "Error retrieving service result", exception)
             return when ((exception as? HttpException)?.code()) {
                 401 -> Result.Error(ForecastError.ApiConfigurationError)
                 404 -> Result.Error(ForecastError.CityNotFound)
