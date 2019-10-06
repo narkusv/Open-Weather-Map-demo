@@ -52,7 +52,7 @@ class HistoryFragment : Fragment() {
                 showSnackBarError(getString(R.string.error_generic_error))
             }
             is ForecastError.CityNotFound -> {
-                showSnackBarError(getString(R.string.error_city_not_found))
+                showSnackBarError(getString(R.string.error_history_empty))
             }
             else -> showSnackBarError(getString(R.string.error_generic_error)).also {
                 Log.d(DetailFragment::class.java.name, "Unknown exception has been thrown", error)

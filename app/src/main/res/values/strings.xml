@@ -7,4 +7,5 @@
     <string name="view_history">VIEW HISTORY</string>
     <string name="lookup_weather_forecast">Continue</string>
     <string name="logo">Logo</string>
+    <string name="error_history_empty">It seems that there are no items in forecast history</string>
 </resources>
