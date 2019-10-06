@@ -13,7 +13,7 @@ import org.koin.dsl.module
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-val dataModule = module {
+val dataModule = module(override = true) {
 
     single { provideDefaultOkhttpClient() }
     single {
@@ -24,7 +24,7 @@ val dataModule = module {
     }
     single { createForecastDatabase(get()) }
     single { ForecastLocalDataSource(get<ForecastDatabase>().forecastDao()) }
-    single<WeatherRepository> { WeatherRepositoryImpl(get(), get()) }
+    single<WeatherRepository>(override = true) { WeatherRepositoryImpl(get(), get()) }
 
 }
 

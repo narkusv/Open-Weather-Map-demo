@@ -29,7 +29,7 @@ class DetailViewModel(
                 }
                 loading.value = false
             } catch (ex: Exception) {
-                Log.d(DetailViewModel::class.java.name, "Crash fetching data", ex)
+                error.value = ex
             }
         }
     }

@@ -45,12 +45,12 @@ class WeatherRepositoryImpl constructor(
             )
         } catch (exception: Exception) {
             Log.d(WeatherRepository::class.java.name, "Error retrieving service result", exception)
-            when ((exception as? HttpException)?.code()) {
+            return when ((exception as? HttpException)?.code()) {
                 401 -> Result.Error(ForecastError.ApiConfigurationError)
                 404 -> Result.Error(ForecastError.CityNotFound)
                 429 -> Result.Error(ForecastError.ApiCallsExceeded)
+                else -> Result.Error(exception)
             }
-            Result.Error(ForecastError.GenericError(exception))
         }
     }
 }
